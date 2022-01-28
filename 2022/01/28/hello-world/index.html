@@ -367,7 +367,7 @@ Route::get(<span class="hljs-string">&quot;/user/&#123;id&#125;/&#123;name&#125;
 
 </main>
 
-            <footer class="footer">
+            <footer class="footer" style="font-size: 10px;">
      
     <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
@@ -404,7 +404,10 @@ Route::get(<span class="hljs-string">&quot;/user/&#123;id&#125;/&#123;name&#125;
  
     
     
-    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+    <p>
+        <!-- Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a> -->
+        <span style="color: black;">作者：张程</span>
+    </p>
 </footer>
 
         </div>
@@ -495,7 +498,7 @@ Route::get(<span class="hljs-string">&quot;/user/&#123;id&#125;/&#123;name&#125;
             (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
             document.body.appendChild(e);
             e.onload = () => {
-                var valineConfig = {"appId":"c21JqSBfScFdueO44Scwp9Ba-gzGzoHsz","appKey":"apETP0QIekHzRXjTHvOnrQmS","placeholder":null,"path":null,"avatar":null,"meta":["nick","mail","link"],"pageSize":null,"lang":null,"visitor":null,"highlight":null,"avatarForce":null,"recordIP":null,"serverURLs":null,"enableQQ":true,"requiredFields":["nick","mail"],"emojiCDN":null,"emojiMaps":null};
+                var valineConfig = {"appId":"c21JqSBfScFdueO44Scwp9Ba-gzGzoHsz","appKey":"apETP0QIekHzRXjTHvOnrQmS","placeholder":null,"path":null,"avatar":"retro","meta":["nick","mail","link"],"pageSize":null,"lang":null,"visitor":null,"highlight":null,"avatarForce":null,"recordIP":null,"serverURLs":null,"enableQQ":true,"requiredFields":["nick","mail"],"emojiCDN":null,"emojiMaps":null};
                 valineConfig.el = '#valine_container';
                 for (var i in valineConfig) {
                     if (valineConfig[i] === null) delete valineConfig[i];
