@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>laravel学习笔记 | 猫头鹰的BLOG</title>
+
+
+    <meta name="keywords" content="laravel, 猫头鹰的博客">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="laravellaravel框架笔记1.环境搭建步骤   下载composer网址 检查composer安装完成命令：php artisan –version 创建一个laravel项目：composer create-project laravel&#x2F;laravel 启动laravel：php artisan serve 服务器配置：选择的时nginx 在Nginx1.15.11\conf\v">
+<meta property="og:type" content="article">
+<meta property="og:title" content="laravel学习笔记">
+<meta property="og:url" content="http://example.com/2022/01/28/hello-world/index.html">
+<meta property="og:site_name" content="猫头鹰的BLOG">
+<meta property="og:description" content="laravellaravel框架笔记1.环境搭建步骤   下载composer网址 检查composer安装完成命令：php artisan –version 创建一个laravel项目：composer create-project laravel&#x2F;laravel 启动laravel：php artisan serve 服务器配置：选择的时nginx 在Nginx1.15.11\conf\v">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/11/27/CUZ6KXcRBTdjIGH.jpg">
+<meta property="article:published_time" content="2022-01-28T02:10:58.640Z">
+<meta property="article:modified_time" content="2022-01-27T14:24:46.193Z">
+<meta property="article:author" content="张程">
+<meta property="article:tag" content="laravel">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2020/11/27/CUZ6KXcRBTdjIGH.jpg">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/a11y-light.min.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/a11y-dark.min.css" media="none">
+        
+    
+
+    
+
+    
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+     
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ 
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">猫头鹰</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        laravel学习笔记
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/01/" class="post-meta__date button">2022-01-28</a>
+        
+    <span class="separate-dot"></span><a href="/categories/laravel/" class="button">laravel</a>
+
+ 
+        
+    
+     
+    <span id="busuanzi_container_page_pv" hidden>
+        <span class="separate-dot"></span>
+        <span></span>
+        <span id="busuanzi_value_page_pv"></span>
+        <span>次观看</span>
+    </span>
+
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header">
+    
+        <div class="post-thumbnail lazy" data-bg="https://i.loli.net/2020/11/27/CUZ6KXcRBTdjIGH.jpg"></div>
+    
+</div>
+    <div class="post__content">
+        <!-- <details open><summary>折叠摘要</summary><div class="fold-content"><p>内容</p>
+</div></details> -->
+
+<blockquote class="blockquote-note blockquote-note__info"><div class="blockquote-note__header"><div class="blockquote-note__icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></div>laravel</div><div class="blockquote-note__content"><h1 id="laravel框架笔记"><a href="#laravel框架笔记" class="headerlink" title="laravel框架笔记"></a>laravel框架笔记</h1><h2 id="1-环境搭建"><a href="#1-环境搭建" class="headerlink" title="1.环境搭建"></a>1.环境搭建</h2><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><!-- fancybox配置项 -->
+<!-- ![报纸](https://i.loli.net/2020/11/27/CUZ6KXcRBTdjIGH.jpg) -->
+<ol>
+<li>下载composer<a target="_blank" rel="noopener" href="https://getcomposer.org/download/">网址</a></li>
+<li>检查composer安装完成命令：php artisan –version</li>
+<li>创建一个laravel项目：composer create-project laravel/laravel</li>
+<li>启动laravel：php artisan serve</li>
+<li>服务器配置：选择的时nginx</li>
+<li>在Nginx1.15.11\conf\vhost下的域名.confs文件下添加：try_files $uri $uri/ /index.php?$query_string*;*</li>
+<li>在c盘system32中的hosts文件下添加：127.0.0.1 域名</li>
+</ol>
+<h2 id="2-路由"><a href="#2-路由" class="headerlink" title="2.路由"></a>2.路由</h2><ol>
+<li>基本路由</li>
+</ol>
+<pre><code class="hljs php">Route::get(<span class="hljs-string">&#x27;/hello1&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello word1!&quot;</span>;
+&#125;);</code></pre>
+
+<ol start="2">
+<li>多种请求方式的路由</li>
+</ol>
+<pre><code class="hljs php">Route::any(<span class="hljs-string">&quot;/any&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    dd(<span class="hljs-string">&quot;any&quot;</span>);
+&#125;);
+<span class="hljs-comment">//或者</span>
+Route::match([<span class="hljs-string">&quot;get&quot;</span>,<span class="hljs-string">&quot;post&quot;</span>],<span class="hljs-string">&quot;/login&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    dd(<span class="hljs-string">&quot;match&quot;</span>);
+&#125;);</code></pre>
+
+<ol start="3">
+<li>定向路由</li>
+</ol>
+<pre><code class="hljs php">Route::redirect(<span class="hljs-string">&quot;/redirect1&quot;</span>,<span class="hljs-string">&quot;/redirect2&quot;</span>,<span class="hljs-number">301</span>);</code></pre>
+
+<ol start="4">
+<li>视图路由</li>
+</ol>
+<pre><code class="hljs php">Route::view(<span class="hljs-string">&quot;/wel&quot;</span>,<span class="hljs-string">&quot;welcome&quot;</span>);</code></pre>
+
+<ol start="5">
+<li>必填参数路由</li>
+</ol>
+<pre><code class="hljs php">Route::get(<span class="hljs-string">&quot;/params/&#123;id&#125;&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-variable">$id</span></span>)</span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$id</span>;
+&#125;);</code></pre>
+
+<ol start="6">
+<li>可选参数路由</li>
+</ol>
+<pre><code class="hljs php">Route::get(<span class="hljs-string">&quot;/optional/&#123;id?&#125;&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-variable">$id</span>=<span class="hljs-string">&quot;default&quot;</span></span>)</span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;可选参数：&quot;</span>.<span class="hljs-variable">$id</span>;
+&#125;);</code></pre>
+
+<ol start="7">
+<li>正则约束=&gt;路由参数</li>
+</ol>
+<pre><code class="hljs php">Route::get(<span class="hljs-string">&quot;/regular/&#123;id&#125;&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-variable">$id</span></span>)</span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$id</span>;
+&#125;)-&gt;where(<span class="hljs-string">&#x27;id&#x27;</span>,<span class="hljs-string">&quot;[0-9]+&quot;</span>);
+
+<span class="hljs-comment">//或者</span>
+Route::get(<span class="hljs-string">&quot;/regular/&#123;name&#125;&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-variable">$name</span></span>)</span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$name</span>;
+&#125;)-&gt;where(<span class="hljs-string">&#x27;id&#x27;</span>,<span class="hljs-string">&quot;[a-zA-Z]+&quot;</span>);
+
+<span class="hljs-comment">//全局约束  在providers/RouteServiceProvider.php的boot类中</span>
+Route::pattern(<span class="hljs-string">&quot;id&quot;</span>,<span class="hljs-string">&quot;[0-9]+&quot;</span>);</code></pre>
+
+<ol start="8">
+<li>命名</li>
+</ol>
+<pre><code class="hljs php">Route::get(<span class="hljs-string">&#x27;givename&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-comment">// 通过路由名称生成 URL</span>
+    <span class="hljs-keyword">return</span> route(<span class="hljs-string">&#x27;givename&#x27;</span>);
+&#125;)-&gt;name(<span class="hljs-string">&#x27;givename&#x27;</span>);
+
+<span class="hljs-comment">//含参数</span>
+Route::get(<span class="hljs-string">&quot;/user/&#123;id&#125;/&#123;name&#125;/givename_params&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-keyword">return</span> route(<span class="hljs-string">&#x27;givename_params&#x27;</span>,[<span class="hljs-string">&#x27;id&#x27;</span>=&gt;<span class="hljs-number">123</span>,<span class="hljs-string">&quot;name&quot;</span>=&gt;<span class="hljs-string">&#x27;lisi&#x27;</span>]);
+&#125;)-&gt;name(<span class="hljs-string">&quot;givename_params&quot;</span>);</code></pre>
+
+<h2 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h2><ol>
+<li>基本控制器</li>
+</ol>
+<p> <em>创建命令</em></p>
+<pre><code class="hljs php">php artisan make:controller controllername</code></pre>
+
+<p><em>路由格式</em></p>
+<pre><code class="hljs ph">Route::get(&quot;url&quot;,[controllername::class,&quot;functionname&quot;])</code></pre>
+
+<ol start="2">
+<li>单行为控制器</li>
+</ol>
+<p> <em>创建命令</em></p>
+<pre><code class="hljs php">php artisan make:controller controllername --invakable</code></pre>
+
+<p><em>路由格式</em></p>
+<pre><code class="hljs ph">Route::get(&quot;url&quot;,controllername::class)</code></pre>
+
+<ol start="3">
+<li>资源控制器</li>
+</ol>
+<p> <em>创建命令</em></p>
+<pre><code class="hljs php">php artisan make:controller controllername --resource</code></pre>
+
+<p><em>路由格式</em></p>
+<pre><code class="hljs ph">Route::get(&quot;name&quot;,controllername::class)-&gt;names([&#x27;index&#x27;=&gt;&quot;index2&quot;])-&gt;parameters([&#x27;name&#x27;=&gt;&#x27;name2&#x27;])</code></pre>
+
+
+
+
+</div></blockquote>
+
+
+
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-01-27</p></div> 
+    <div class="post-entry__tags"><a href="/tags/laravel/" class="post-tags__link button"># laravel</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/2022/01/28/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            <!-- Previous Post -->
+                            上一页
+                        </div>
+                        <div class="nav__title">
+                            个人博客搭建
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2022/01/27/PhpHotel%E9%A1%B9%E7%9B%AE/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            <!-- Next Post -->
+                            下一页
+                        </div>
+                        <div class="nav__title">
+                            PhpHotel项目
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>评论</h4>
+    
+    
+    
+    <div id="valine_container" class="valine_thread"></div>
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+    </div>
+
+
+
+</main>
+
+            <footer class="footer">
+     
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+    
+
+
+    
+    
+    
+        <span id="busuanzi_container_site_uv" hidden>
+            <span>游客:</span>
+            <span id="busuanzi_value_site_uv"></span>
+            <span></span>
+            
+                <span> </span>
+            
+        </span>
+    
+    
+        <span id="busuanzi_container_site_pv" hidden>
+            <span>次数:</span>
+            <span id="busuanzi_value_site_pv"></span>
+            <span></span>
+            
+        </span>
+    
+ 
+ 
+
+ 
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+        
+    <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+    <script>
+        window.lazyLoadOptions = {
+            elements_selector: ".lazy",
+            threshold: 0
+        };
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('true'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+    
+
+    
+    
+    
+    <script>
+        function loadComment() {
+            let e;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                var valineConfig = {"appId":"c21JqSBfScFdueO44Scwp9Ba-gzGzoHsz","appKey":"apETP0QIekHzRXjTHvOnrQmS","placeholder":null,"path":null,"avatar":null,"meta":["nick","mail","link"],"pageSize":null,"lang":null,"visitor":null,"highlight":null,"avatarForce":null,"recordIP":null,"serverURLs":null,"enableQQ":true,"requiredFields":["nick","mail"],"emojiCDN":null,"emojiMaps":null};
+                valineConfig.el = '#valine_container';
+                for (var i in valineConfig) {
+                    if (valineConfig[i] === null) delete valineConfig[i];
+                }
+                new Valine(valineConfig);
+            };
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+
+
+
+    </body>
+</html>

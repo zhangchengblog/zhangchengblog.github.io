@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>PhpHotel项目 | 猫头鹰的BLOG</title>
+
+
+    <meta name="keywords" content="hotel, 猫头鹰的博客">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="laravelhotel项目笔记1.连接数据库mysqli_connect()    &#x2F;&#x2F;连接数据库 mysqli_set_charset()    &#x2F;&#x2F;设置字符集  2.登录(增加)思路 连接数据库 获取表单的值 执行查询语句，结果为真，则登录，反则，弹出提示并刷新页面 结果为真，登录之前设置cookie  $_POST[&amp;#x27;&amp;#x27;] or $_GET[&amp;#x27;&amp;#x27;]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PhpHotel项目">
+<meta property="og:url" content="http://example.com/2022/01/27/PhpHotel%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="猫头鹰的BLOG">
+<meta property="og:description" content="laravelhotel项目笔记1.连接数据库mysqli_connect()    &#x2F;&#x2F;连接数据库 mysqli_set_charset()    &#x2F;&#x2F;设置字符集  2.登录(增加)思路 连接数据库 获取表单的值 执行查询语句，结果为真，则登录，反则，弹出提示并刷新页面 结果为真，登录之前设置cookie  $_POST[&amp;#x27;&amp;#x27;] or $_GET[&amp;#x27;&amp;#x27;]">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/11/27/CUZ6KXcRBTdjIGH.jpg">
+<meta property="article:published_time" content="2022-01-27T14:01:20.000Z">
+<meta property="article:modified_time" content="2022-01-27T14:07:44.545Z">
+<meta property="article:author" content="张程">
+<meta property="article:tag" content="hotel">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2020/11/27/CUZ6KXcRBTdjIGH.jpg">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/a11y-light.min.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/a11y-dark.min.css" media="none">
+        
+    
+
+    
+
+    
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+     
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ 
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">猫头鹰</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        PhpHotel项目
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/01/" class="post-meta__date button">2022-01-27</a>
+        
+    <span class="separate-dot"></span><a href="/categories/php/" class="button">php</a>
+
+ 
+        
+    
+     
+    <span id="busuanzi_container_page_pv" hidden>
+        <span class="separate-dot"></span>
+        <span></span>
+        <span id="busuanzi_value_page_pv"></span>
+        <span>次观看</span>
+    </span>
+
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header">
+    
+        <div class="post-thumbnail lazy" data-bg="https://i.loli.net/2020/11/27/CUZ6KXcRBTdjIGH.jpg"></div>
+    
+</div>
+    <div class="post__content">
+        <blockquote class="blockquote-note blockquote-note__info"><div class="blockquote-note__header"><div class="blockquote-note__icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></div>laravel</div><div class="blockquote-note__content"><h1 id="hotel项目笔记"><a href="#hotel项目笔记" class="headerlink" title="hotel项目笔记"></a>hotel项目笔记</h1><h2 id="1-连接数据库"><a href="#1-连接数据库" class="headerlink" title="1.连接数据库"></a>1.连接数据库</h2><pre><code class="hljs php">mysqli_connect()    <span class="hljs-comment">//连接数据库</span>
+mysqli_set_charset()    <span class="hljs-comment">//设置字符集</span></code></pre>
+
+<h2 id="2-登录-增加"><a href="#2-登录-增加" class="headerlink" title="2.登录(增加)"></a>2.登录(增加)</h2><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ol>
+<li>连接数据库</li>
+<li>获取表单的值</li>
+<li>执行查询语句，结果为真，则登录，反则，弹出提示并刷新页面</li>
+<li>结果为真，登录之前设置cookie</li>
+</ol>
+<pre><code class="hljs php"><span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;&#x27;</span>] <span class="hljs-keyword">or</span> <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;&#x27;</span>] <span class="hljs-comment">//获取表单的值</span>
+<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;REQUEST_METHOD&#x27;</span>]==<span class="hljs-string">&quot;POST&quot;</span> <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;GET&quot;</span> <span class="hljs-comment">//判断表单是否提交，返回类型布尔</span>
+mysqli_query(<span class="hljs-variable">$link</span>,<span class="hljs-variable">$sql</span>) <span class="hljs-comment">//执行查询，返回类型布尔   第一个参数mysqli_connect() 第二个参数查询语句</span>
+mysqli_fetch_assoc(<span class="hljs-variable">$rs</span>) <span class="hljs-comment">//结果集，返回类型布尔    参数mysqli_query()</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;script&gt;location.href=&#x27;xxx&#x27;&lt;/script&gt;&quot;</span> <span class="hljs-comment">//js跳转语句</span>
+setcookie(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;value&quot;</span>)   <span class="hljs-comment">//创建一个cookie</span>
+<span class="hljs-variable">$_COOKIE</span>[<span class="hljs-string">&#x27;name&#x27;</span>]    <span class="hljs-comment">//获取cookie的值</span></code></pre>
+
+<ol start="4">
+<li>添加一个验证码功能   通过session实现<ol>
+<li>开启会话</li>
+<li>获取表单中验证码的值，和验证码图片的值</li>
+<li>进行判断</li>
+</ol>
+</li>
+</ol>
+<pre><code class="hljs php">session_start() <span class="hljs-comment">//开启会话</span>
+<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;name&#x27;</span>]=<span class="hljs-string">&#x27;value&#x27;</span>   <span class="hljs-comment">//设置session 它为全局变量</span>
+<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;name&#x27;</span>]   <span class="hljs-comment">//获取session</span></code></pre>
+
+<h2 id="3-显示列表-查询"><a href="#3-显示列表-查询" class="headerlink" title="3.显示列表(查询)"></a>3.显示列表(查询)</h2><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><ol>
+<li>通过cookie获取id</li>
+<li>根据id这个外键查询subscription表</li>
+<li>页面显示</li>
+</ol>
+<pre><code class="hljs php">mysqli_fetch_all(<span class="hljs-variable">$rs</span>);  <span class="hljs-comment">//返回一个结果集 索引</span>
+mysqli_fetch_assoc(<span class="hljs-variable">$rs</span>) <span class="hljs-comment">//返回一个结果集 字符串</span>
+<span class="hljs-keyword">foreach</span>(<span class="hljs-keyword">array</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$row</span>)&#123;&#125;    <span class="hljs-comment">//遍历</span></code></pre>
+
+<h2 id="4-退出登录"><a href="#4-退出登录" class="headerlink" title="4.退出登录"></a>4.退出登录</h2><h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><ol>
+<li>获取cookie 是则进行第二步，否则提示尚未登录</li>
+<li>清除cookie和session</li>
+<li>跳转到登录页面</li>
+</ol>
+<pre><code class="hljs php">setcookie(<span class="hljs-string">&#x27;name&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>,time()-<span class="hljs-number">1</span>)   <span class="hljs-comment">//清除cookie</span>
+<span class="hljs-keyword">unset</span>(<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;name&#x27;</span>]);   <span class="hljs-comment">//删除保存数据的ssesion变量</span>
+session_destroy();  <span class="hljs-comment">//删除服务器端保存的ssesion文件</span></code></pre>
+
+<h2 id="5-修改密码"><a href="#5-修改密码" class="headerlink" title="5.修改密码"></a>5.修改密码</h2><h4 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h4><ol>
+<li>在跳转之前，用ajax判断旧密码是否正确</li>
+<li>加载页面</li>
+<li>连接数据库</li>
+<li>通过cookie获取id</li>
+<li>获取表单的新旧密码</li>
+<li>用ajax判断旧密码是否正确</li>
+<li>执行修改语句</li>
+<li>跳转至登录页面</li>
+</ol>
+<h2 id="6-检查旧密码-ajax"><a href="#6-检查旧密码-ajax" class="headerlink" title="6.检查旧密码(ajax)"></a>6.检查旧密码(ajax)</h2><h4 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h4><ol>
+<li>在页面旧密码input绑定一个失去焦点事件</li>
+<li>通过ajax实现异步将数据传给php</li>
+<li>在php中执行查询语句  通过echo 返回数据</li>
+<li>ajax接收php的数据并写入页面</li>
+<li>在提交按钮绑定一个点击事件</li>
+<li>判断密码是否错误 是则返回false</li>
+</ol>
+<pre><code class="hljs Javascript">xmlhttp = <span class="hljs-keyword">new</span> XMLHttpRequest(); <span class="hljs-comment">//创建XMLHttpRequest对象</span>
+<span class="hljs-keyword">var</span> str=<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;xx&quot;</span>).value;
+<span class="hljs-keyword">var</span> url=<span class="hljs-string">&quot;check.php?data=&quot;</span>+str <span class="hljs-comment">//获取页面数据建立请求url</span>
+xmlhttp.open(<span class="hljs-string">&quot;get&quot;</span>,url,<span class="hljs-literal">true</span>)    <span class="hljs-comment">//打开服务器连接</span>
+xmlhttp.send()  <span class="hljs-comment">//发送</span>
+xmlhttp.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;  <span class="hljs-comment">//设置响应处理函数</span>
+<span class="hljs-keyword">if</span> (xmlhttp.readyState == <span class="hljs-number">4</span> &amp;&amp; xmlhttp.status == <span class="hljs-number">200</span>) &#123;
+    <span class="hljs-keyword">var</span> temp=<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;wpassword&quot;</span>);
+    temp.innerHTML=xmlhttp.responseText;
+&#125;&#125;</code></pre>
+
+<h2 id="7-注册-添加"><a href="#7-注册-添加" class="headerlink" title="7.注册(添加)"></a>7.注册(添加)</h2><h4 id="思路-5"><a href="#思路-5" class="headerlink" title="思路"></a>思路</h4><ol>
+<li>在跳转之前,用ajax判断用户名是否重名</li>
+<li>连接数据库</li>
+<li>加载页面</li>
+<li>获取页面提交的数据</li>
+<li>判断表单是否提交</li>
+<li>判断页面数据是否为空和密码是否相等</li>
+<li>执行插入语句</li>
+<li>跳转至登录页面</li>
+</ol>
+<h2 id="数据库执行语句-附加"><a href="#数据库执行语句-附加" class="headerlink" title="数据库执行语句(附加)"></a>数据库执行语句(附加)</h2><ol>
+<li>查询</li>
+</ol>
+<pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">NO</span>,Linkman,Phone,Email <span class="hljs-keyword">from</span> subscription <span class="hljs-keyword">where</span> m_id<span class="hljs-operator">=</span><span class="hljs-string">&#x27;$id&#x27;</span></code></pre>
+
+<ol start="2">
+<li>修改</li>
+</ol>
+<pre><code class="hljs sql">update <span class="hljs-keyword">member</span> <span class="hljs-keyword">set</span> password<span class="hljs-operator">=</span><span class="hljs-string">&#x27;$new&#x27;</span> <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span><span class="hljs-string">&#x27;$id&#x27;</span></code></pre>
+
+<ol start="3">
+<li>插入</li>
+</ol>
+<pre><code class="hljs sql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">member</span>(username,password) <span class="hljs-keyword">values</span>(<span class="hljs-string">&#x27;$username&#x27;</span>,<span class="hljs-string">&#x27;$password&#x27;</span>)</code></pre>
+
+<ol start="3">
+<li>删除</li>
+</ol>
+<pre><code class="hljs sql"><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">member</span> <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span><span class="hljs-string">&#x27;$id&#x27;</span></code></pre></div></blockquote>
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-01-27</p></div> 
+    <div class="post-entry__tags"><a href="/tags/hotel/" class="post-tags__link button"># hotel</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/2022/01/28/hello-world/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            <!-- Previous Post -->
+                            上一页
+                        </div>
+                        <div class="nav__title">
+                            laravel学习笔记
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+        </div>
+    </div>
+
+
+
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>评论</h4>
+    
+    
+    
+    <div id="valine_container" class="valine_thread"></div>
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+    </div>
+
+
+
+</main>
+
+            <footer class="footer">
+     
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+    
+
+
+    
+    
+    
+        <span id="busuanzi_container_site_uv" hidden>
+            <span>游客:</span>
+            <span id="busuanzi_value_site_uv"></span>
+            <span></span>
+            
+                <span> </span>
+            
+        </span>
+    
+    
+        <span id="busuanzi_container_site_pv" hidden>
+            <span>次数:</span>
+            <span id="busuanzi_value_site_pv"></span>
+            <span></span>
+            
+        </span>
+    
+ 
+ 
+
+ 
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+        
+    <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+    <script>
+        window.lazyLoadOptions = {
+            elements_selector: ".lazy",
+            threshold: 0
+        };
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('true'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+    
+
+    
+    
+    
+    <script>
+        function loadComment() {
+            let e;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                var valineConfig = {"appId":"c21JqSBfScFdueO44Scwp9Ba-gzGzoHsz","appKey":"apETP0QIekHzRXjTHvOnrQmS","placeholder":null,"path":null,"avatar":null,"meta":["nick","mail","link"],"pageSize":null,"lang":null,"visitor":null,"highlight":null,"avatarForce":null,"recordIP":null,"serverURLs":null,"enableQQ":true,"requiredFields":["nick","mail"],"emojiCDN":null,"emojiMaps":null};
+                valineConfig.el = '#valine_container';
+                for (var i in valineConfig) {
+                    if (valineConfig[i] === null) delete valineConfig[i];
+                }
+                new Valine(valineConfig);
+            };
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+
+
+
+    </body>
+</html>
