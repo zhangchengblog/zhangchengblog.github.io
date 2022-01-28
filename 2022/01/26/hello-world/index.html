@@ -27,30 +27,30 @@
     <!-- meta -->
 
 
-<title>个人博客搭建 | 猫头鹰的BLOG</title>
+<title>laravel学习笔记 | 猫头鹰的BLOG</title>
 
 
-    <meta name="keywords" content="个人博客, 猫头鹰的博客">
+    <meta name="keywords" content="笔记, 猫头鹰的博客">
 
 
 
 
     <!-- OpenGraph -->
  
-    <meta name="description" content="laravel个人博客搭建1.所需工具 node.js git hexo  2.搭建仓库步骤 注册github账号 new一个仓库 仓库名称写账户名 全部勾选,完成  3.生成ssh keys步骤 随便进入一个文件夹，右键git bash here运行 输入命令 ssh ，之后会在用户文件夹下生成.ssh文件夹  $ ssh   进行ssh邮箱绑定,输入之后一直回车。  $ ssh-keyge">
+    <meta name="description" content="laravellaravel框架笔记1.环境搭建步骤   下载composer网址 检查composer安装完成命令：php artisan –version 创建一个laravel项目：composer create-project laravel&#x2F;laravel 启动laravel：php artisan serve 服务器配置：选择的时nginx 在Nginx1.15.11\conf\v">
 <meta property="og:type" content="article">
-<meta property="og:title" content="个人博客搭建">
-<meta property="og:url" content="http://example.com/2022/01/28/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:title" content="laravel学习笔记">
+<meta property="og:url" content="http://example.com/2022/01/26/hello-world/index.html">
 <meta property="og:site_name" content="猫头鹰的BLOG">
-<meta property="og:description" content="laravel个人博客搭建1.所需工具 node.js git hexo  2.搭建仓库步骤 注册github账号 new一个仓库 仓库名称写账户名 全部勾选,完成  3.生成ssh keys步骤 随便进入一个文件夹，右键git bash here运行 输入命令 ssh ，之后会在用户文件夹下生成.ssh文件夹  $ ssh   进行ssh邮箱绑定,输入之后一直回车。  $ ssh-keyge">
+<meta property="og:description" content="laravellaravel框架笔记1.环境搭建步骤   下载composer网址 检查composer安装完成命令：php artisan –version 创建一个laravel项目：composer create-project laravel&#x2F;laravel 启动laravel：php artisan serve 服务器配置：选择的时nginx 在Nginx1.15.11\conf\v">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.loli.net/2020/11/27/CUZ6KXcRBTdjIGH.jpg">
-<meta property="article:published_time" content="2022-01-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-01-28T12:39:59.106Z">
+<meta property="og:image" content="https://s1.imgpp.com/2022/01/28/pexels-alesia-kozik-6770609.jpg">
+<meta property="article:published_time" content="2022-01-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-28T12:39:34.910Z">
 <meta property="article:author" content="张程">
-<meta property="article:tag" content="个人博客">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.loli.net/2020/11/27/CUZ6KXcRBTdjIGH.jpg">
+<meta name="twitter:image" content="https://s1.imgpp.com/2022/01/28/pexels-alesia-kozik-6770609.jpg">
 
 
     
@@ -144,12 +144,12 @@
 
 <div class="post-title">
     <h1 class="post-title__text">
-        个人博客搭建
+        laravel学习笔记
     </h1>
     <div class="post-title__meta">
-        <a href="/archives/2022/01/" class="post-meta__date button">2022-01-28</a>
+        <a href="/archives/2022/01/" class="post-meta__date button">2022-01-26</a>
         
-    <span class="separate-dot"></span><a href="/categories/blog/" class="button">blog</a>
+    <span class="separate-dot"></span><a href="/categories/laravel/" class="button">laravel</a>
 
  
         
@@ -175,103 +175,139 @@
 <article class="post content-card">
     <div class="post__header">
     
-        <div class="post-thumbnail lazy" data-bg="https://i.loli.net/2020/11/27/CUZ6KXcRBTdjIGH.jpg"></div>
+        <div class="post-thumbnail lazy" data-bg="https://s1.imgpp.com/2022/01/28/pexels-alesia-kozik-6770609.jpg"></div>
     
 </div>
     <div class="post__content">
         <!-- <details open><summary>折叠摘要</summary><div class="fold-content"><p>内容</p>
 </div></details> -->
 
-<blockquote class="blockquote-note blockquote-note__info"><div class="blockquote-note__header"><div class="blockquote-note__icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></div>laravel</div><div class="blockquote-note__content"><h1 id="个人博客搭建"><a href="#个人博客搭建" class="headerlink" title="个人博客搭建"></a>个人博客搭建</h1><h2 id="1-所需工具"><a href="#1-所需工具" class="headerlink" title="1.所需工具"></a>1.所需工具</h2><ol>
-<li>node.js</li>
-<li>git</li>
-<li>hexo</li>
+<blockquote class="blockquote-note blockquote-note__info"><div class="blockquote-note__header"><div class="blockquote-note__icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></div>laravel</div><div class="blockquote-note__content"><h1 id="laravel框架笔记"><a href="#laravel框架笔记" class="headerlink" title="laravel框架笔记"></a>laravel框架笔记</h1><h2 id="1-环境搭建"><a href="#1-环境搭建" class="headerlink" title="1.环境搭建"></a>1.环境搭建</h2><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><!-- fancybox配置项 -->
+<!-- ![报纸](https://i.loli.net/2020/11/27/CUZ6KXcRBTdjIGH.jpg) -->
+<ol>
+<li>下载composer<a target="_blank" rel="noopener" href="https://getcomposer.org/download/">网址</a></li>
+<li>检查composer安装完成命令：php artisan –version</li>
+<li>创建一个laravel项目：composer create-project laravel/laravel</li>
+<li>启动laravel：php artisan serve</li>
+<li>服务器配置：选择的时nginx</li>
+<li>在Nginx1.15.11\conf\vhost下的域名.confs文件下添加：try_files $uri $uri/ /index.php?$query_string*;*</li>
+<li>在c盘system32中的hosts文件下添加：127.0.0.1 域名</li>
 </ol>
-<h2 id="2-搭建仓库"><a href="#2-搭建仓库" class="headerlink" title="2.搭建仓库"></a>2.搭建仓库</h2><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ol>
-<li>注册github账号</li>
-<li>new一个仓库</li>
-<li>仓库名称写账户名</li>
-<li>全部勾选,完成</li>
+<h2 id="2-路由"><a href="#2-路由" class="headerlink" title="2.路由"></a>2.路由</h2><ol>
+<li>基本路由</li>
 </ol>
-<h2 id="3-生成ssh-keys"><a href="#3-生成ssh-keys" class="headerlink" title="3.生成ssh keys"></a>3.生成ssh keys</h2><h4 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h4><ol>
-<li>随便进入一个文件夹，右键git bash here运行</li>
-<li>输入命令 ssh ，之后会在用户文件夹下生成.ssh文件夹</li>
+<pre><code class="hljs php">Route::get(<span class="hljs-string">&#x27;/hello1&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello word1!&quot;</span>;
+&#125;);</code></pre>
+
+<ol start="2">
+<li>多种请求方式的路由</li>
 </ol>
-<pre><code class="hljs js">$ ssh</code></pre>
+<pre><code class="hljs php">Route::any(<span class="hljs-string">&quot;/any&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    dd(<span class="hljs-string">&quot;any&quot;</span>);
+&#125;);
+<span class="hljs-comment">//或者</span>
+Route::match([<span class="hljs-string">&quot;get&quot;</span>,<span class="hljs-string">&quot;post&quot;</span>],<span class="hljs-string">&quot;/login&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    dd(<span class="hljs-string">&quot;match&quot;</span>);
+&#125;);</code></pre>
 
 <ol start="3">
-<li>进行ssh邮箱绑定,输入之后一直回车。</li>
+<li>定向路由</li>
 </ol>
-<pre><code class="hljs js">$ ssh-keygen -t rsa -C <span class="hljs-string">&quot;邮箱地址&quot;</span></code></pre>
+<pre><code class="hljs php">Route::redirect(<span class="hljs-string">&quot;/redirect1&quot;</span>,<span class="hljs-string">&quot;/redirect2&quot;</span>,<span class="hljs-number">301</span>);</code></pre>
 
 <ol start="4">
-<li>复制.ssh/id_rsa.pub文件下的所有内容</li>
-<li>打开github的settings下的SSH and GPG keys选项</li>
-<li>新建一个ssh keys（名字无所谓，key为之前复制的内容）</li>
-<li>验证ssh是否绑定成功,输入以下命令，输入yes，完成。</li>
+<li>视图路由</li>
 </ol>
-<pre><code class="hljs plaintext">$ sh -T git@github.com</code></pre>
-
-<h2 id="4-生成本地博客"><a href="#4-生成本地博客" class="headerlink" title="4.生成本地博客"></a>4.生成本地博客</h2><ol>
-<li>新建一个文件夹，右键git bash here运行</li>
-<li>初始化hexo，（失败就多安装几次）,成功后，会多出很多文件。</li>
-</ol>
-<pre><code class="hljs plaintext">$ hexo init</code></pre>
-
-<ol start="3">
-<li>生成本地博客页面，启动服务器命令：</li>
-</ol>
-<pre><code class="hljs plaintext">$ hexo s</code></pre>
-
-<ol start="4">
-<li>复制网址打开，ctrl+c(关闭服务器)，再次打开会404。</li>
-</ol>
-<h2 id="5-博客发布至互联网"><a href="#5-博客发布至互联网" class="headerlink" title="5.博客发布至互联网"></a>5.博客发布至互联网</h2><ol>
-<li>打开上一步文件夹下的_config.yml</li>
-<li>将deploy配置项替换，内容如下：</li>
-</ol>
-<pre><code class="hljs javascript">deploy:
-	type: git
-	<span class="hljs-attr">repository</span>: 仓库网址
-	<span class="hljs-attr">branch</span>: main</code></pre>
-
-<ol start="3">
-<li>git bash here运行</li>
-<li>生成页面：</li>
-</ol>
-<pre><code class="hljs plaintext">$ hexo g</code></pre>
+<pre><code class="hljs php">Route::view(<span class="hljs-string">&quot;/wel&quot;</span>,<span class="hljs-string">&quot;welcome&quot;</span>);</code></pre>
 
 <ol start="5">
-<li>验证账号：</li>
+<li>必填参数路由</li>
 </ol>
-<pre><code class="hljs plaintext">$ git config --global user.email &quot;邮箱&quot;
-$ git config --global user.name &quot;用户名&quot;
-$ hexo d</code></pre>
+<pre><code class="hljs php">Route::get(<span class="hljs-string">&quot;/params/&#123;id&#125;&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-variable">$id</span></span>)</span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$id</span>;
+&#125;);</code></pre>
 
 <ol start="6">
-<li>接着会弹两个窗，输入用户名，输入密码</li>
-<li>在输入密码之前，打开github settings/Developer settings/Personal access tokens 创建一个令牌</li>
-<li>名字随便取，内容全部勾选</li>
-<li>复制令牌，粘贴至密码输入框</li>
-<li>最后成功将本地文件上传至github仓库</li>
-<li>网址名就是仓库名，打开就能看到自己的博客了！</li>
+<li>可选参数路由</li>
 </ol>
-</div></blockquote>
+<pre><code class="hljs php">Route::get(<span class="hljs-string">&quot;/optional/&#123;id?&#125;&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-variable">$id</span>=<span class="hljs-string">&quot;default&quot;</span></span>)</span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;可选参数：&quot;</span>.<span class="hljs-variable">$id</span>;
+&#125;);</code></pre>
 
+<ol start="7">
+<li>正则约束=&gt;路由参数</li>
+</ol>
+<pre><code class="hljs php">Route::get(<span class="hljs-string">&quot;/regular/&#123;id&#125;&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-variable">$id</span></span>)</span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$id</span>;
+&#125;)-&gt;where(<span class="hljs-string">&#x27;id&#x27;</span>,<span class="hljs-string">&quot;[0-9]+&quot;</span>);
+
+<span class="hljs-comment">//或者</span>
+Route::get(<span class="hljs-string">&quot;/regular/&#123;name&#125;&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-variable">$name</span></span>)</span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$name</span>;
+&#125;)-&gt;where(<span class="hljs-string">&#x27;id&#x27;</span>,<span class="hljs-string">&quot;[a-zA-Z]+&quot;</span>);
+
+<span class="hljs-comment">//全局约束  在providers/RouteServiceProvider.php的boot类中</span>
+Route::pattern(<span class="hljs-string">&quot;id&quot;</span>,<span class="hljs-string">&quot;[0-9]+&quot;</span>);</code></pre>
+
+<ol start="8">
+<li>命名</li>
+</ol>
+<pre><code class="hljs php">Route::get(<span class="hljs-string">&#x27;givename&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-comment">// 通过路由名称生成 URL</span>
+    <span class="hljs-keyword">return</span> route(<span class="hljs-string">&#x27;givename&#x27;</span>);
+&#125;)-&gt;name(<span class="hljs-string">&#x27;givename&#x27;</span>);
+
+<span class="hljs-comment">//含参数</span>
+Route::get(<span class="hljs-string">&quot;/user/&#123;id&#125;/&#123;name&#125;/givename_params&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-keyword">return</span> route(<span class="hljs-string">&#x27;givename_params&#x27;</span>,[<span class="hljs-string">&#x27;id&#x27;</span>=&gt;<span class="hljs-number">123</span>,<span class="hljs-string">&quot;name&quot;</span>=&gt;<span class="hljs-string">&#x27;lisi&#x27;</span>]);
+&#125;)-&gt;name(<span class="hljs-string">&quot;givename_params&quot;</span>);</code></pre>
+
+<h2 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h2><ol>
+<li>基本控制器</li>
+</ol>
+<p> <em>创建命令</em></p>
+<pre><code class="hljs php">php artisan make:controller controllername</code></pre>
+
+<p><em>路由格式</em></p>
+<pre><code class="hljs ph">Route::get(&quot;url&quot;,[controllername::class,&quot;functionname&quot;])</code></pre>
+
+<ol start="2">
+<li>单行为控制器</li>
+</ol>
+<p> <em>创建命令</em></p>
+<pre><code class="hljs php">php artisan make:controller controllername --invakable</code></pre>
+
+<p><em>路由格式</em></p>
+<pre><code class="hljs ph">Route::get(&quot;url&quot;,controllername::class)</code></pre>
+
+<ol start="3">
+<li>资源控制器</li>
+</ol>
+<p> <em>创建命令</em></p>
+<pre><code class="hljs php">php artisan make:controller controllername --resource</code></pre>
+
+<p><em>路由格式</em></p>
+<pre><code class="hljs ph">Route::get(&quot;name&quot;,controllername::class)-&gt;names([&#x27;index&#x27;=&gt;&quot;index2&quot;])-&gt;parameters([&#x27;name&#x27;=&gt;&#x27;name2&#x27;])</code></pre>
+
+
+
+
+</div></blockquote>
 
 
 
     </div>
      
     <div class="post-footer__meta"><p>更新于 2022-01-28</p></div> 
-    <div class="post-entry__tags"><a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="post-tags__link button"># 个人博客</a></div> 
+    <div class="post-entry__tags"><a href="/tags/%E7%AC%94%E8%AE%B0/" class="post-tags__link button"># 笔记</a></div> 
 </article>
 
 
     <div class="nav">
         <div class="nav__prev">
             
-                <a href="/2022/01/28/%E7%BD%91%E7%AB%99%E5%9B%BE%E6%A0%87%E5%88%B6%E4%BD%9C/" class="nav__link">
+                <a href="/2022/01/27/PhpHotel%E9%A1%B9%E7%9B%AE/" class="nav__link">
                     <div>
                         <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
                     </div>
@@ -281,28 +317,13 @@ $ hexo d</code></pre>
                             上一页
                         </div>
                         <div class="nav__title">
-                            网站图标制作
+                            PhpHotel项目
                         </div>
                     </div>
                 </a>
             
         </div>
         <div class="nav__next">
-            
-                <a href="/2022/01/27/PhpHotel%E9%A1%B9%E7%9B%AE/" class="nav__link">
-                    <div>
-                        <div class="nav__label">
-                            <!-- Next Post -->
-                            下一页
-                        </div>
-                        <div class="nav__title">
-                            PhpHotel项目
-                        </div>
-                    </div>
-                    <div>
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
-                    </div>
-                </a>
             
         </div>
     </div>
