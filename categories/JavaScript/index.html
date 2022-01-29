@@ -27,7 +27,7 @@
     <!-- meta -->
 
 
-<title>标签：个人博客 | 猫头鹰的BLOG</title>
+<title>分类：JavaScript | 猫头鹰的BLOG</title>
 
 
     <meta name="keywords" content="猫头鹰的博客">
@@ -40,7 +40,7 @@
     <meta name="description" content="长风破浪会有时，直挂云帆济沧海。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="猫头鹰的BLOG">
-<meta property="og:url" content="http://example.com/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:url" content="http://example.com/categories/JavaScript/index.html">
 <meta property="og:site_name" content="猫头鹰的BLOG">
 <meta property="og:description" content="长风破浪会有时，直挂云帆济沧海。">
 <meta property="og:locale" content="zh_CN">
@@ -144,9 +144,9 @@
     </div>
 
             
-
+<main class="main">
     
-        <main class="main">
+        
             
     <div class="post-list">
         
@@ -154,24 +154,24 @@
                 <div class='post-entry content-card'>
                     <div class="post-entry__header">
     
-        <div class="post-thumbnail lazy" data-bg="https://i.loli.net/2020/11/27/CUZ6KXcRBTdjIGH.jpg"></div>
+        <div class="post-thumbnail lazy" data-bg="https://s1.imgpp.com/2022/01/28/pexels-anna-shvets-4588428.jpg"></div>
     
 </div>
 <div class="post-entry__content">
     <h2 class="post-entry__title">
-        个人博客搭建
+        鼠标特效
     </h2>
     
 </div>
 <div class="post-entry__meta">
     <a href="/archives/2022/01/" class="post-meta__date button">2022-01-28</a>
     
-    <span class="separate-dot"></span><a href="/categories/blog/" class="button">blog</a>
+    <span class="separate-dot"></span><a href="/categories/JavaScript/" class="button">JavaScript</a>
 
  
 </div>
-<div class="post-entry__tags"><a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="post-tags__link button"># 个人博客</a></div> 
-<a href="/2022/01/28/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="post-entry__link">个人博客搭建</a>
+<div class="post-entry__tags"><a href="/tags/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" class="post-tags__link button"># 鼠标点击</a><a href="/tags/%E9%BC%A0%E6%A0%87%E6%8B%96%E5%8A%A8/" class="post-tags__link button"># 鼠标拖动</a><a href="/tags/js%E7%89%B9%E6%95%88/" class="post-tags__link button"># js特效</a></div> 
+<a href="/2022/01/28/%E9%BC%A0%E6%A0%87%E7%89%B9%E6%95%88/" class="post-entry__link">鼠标特效</a>
                 </div>
             
         
@@ -179,9 +179,9 @@
     
 
 
-        </main>
+        
     
-
+</main>
 
             <footer class="footer" style="font-size: 10px;">
      
@@ -224,6 +224,138 @@
         <!-- Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a> -->
         <span style="color: black;">作者：张程</span>
     </p>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+    <script>
+        var a_idx = 0;
+            jQuery(document).ready(function($) {
+                $("body").click(function(e) {
+                    var a = new Array("会当凌绝顶，一览众山小", "春蚕到死丝方尽，蜡炬成灰泪始干", "夕阳无限好，只是近黄昏",
+                     "位卑未敢忘忧国", "纸上得来终觉浅，绝知此事要躬行", "人生自古谁无死，留取丹心照汗青", "山重水复疑无路，柳暗花明又一村" ,
+                     "小荷才露尖尖角，早有蜻蜓立上头", "床前明月光，疑是地上霜", "春色满园关不住，一枝红杏出墙来", 
+                     "山际见来烟，竹中窥落日", "道狭草木长，夕露沾我衣","天长地久有时尽，此恨绵绵无绝期");
+                    var color = new Array("#7B7B7B", "#CE0000", "#FF0080","#E800E8","#921AFF","#2828FF",
+                    "#0072E3","#00CACA","#02DF82","#00DB00","#8CEA00","#E1E100","#EAC100","#F75000"
+                    ,"#B87070","#AFAF61","#6FB7B7","#9999CC","#B766AD");
+                    var $i = $("<a href='#' style='text-decoration:none'/>").text(a[a_idx]);
+                    a_idx = (a_idx + 1) % a.length;
+                    var x = e.pageX,
+                        y = e.pageY;
+                    $i.css({
+                        "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+                        "top": y - 20,
+                        "left": x,
+                        "position": "absolute",
+                        "font-weight": "bold",
+                        "color": color[Math.floor(Math.random()*color.length)]
+                    });
+                    $("body").append($i);
+                    $i.animate({
+                            "top": y - 180,
+                            "opacity": 0
+                        },
+                        1500,
+                        function() {
+                            $i.remove();
+                        });
+                });
+            });
+        </script>
+    <script>
+        !function() {
+            function o(w, v, i) {
+                return w.getAttribute(v) || i
+            }
+            function j(i) {
+                return document.getElementsByTagName(i)
+            }
+            function l() {
+                var i = j("script"),
+                w = i.length,
+                v = i[w - 1];
+                return {
+                    l: w,
+                    z: o(v, "zIndex", -1),
+                    o: o(v, "opacity", 0.5),
+                    c: o(v, "color", "0,0,0"),
+                    n: o(v, "count", 99)
+                }
+            }
+            function k() {
+                r = u.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+                n = u.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+            }
+            function b() {
+                e.clearRect(0, 0, r, n);
+                var w = [f].concat(t);
+                var x, v, A, B, z, y;
+                t.forEach(function(i) {
+                    i.x += i.xa,
+                    i.y += i.ya,
+                    i.xa *= i.x > r || i.x < 0 ? -1 : 1,
+                    i.ya *= i.y > n || i.y < 0 ? -1 : 1,
+                    e.fillRect(i.x - 0.5, i.y - 0.5, 1, 1);
+                    for (v = 0; v < w.length; v++) {
+                        x = w[v];
+                        if (i !== x && null !== x.x && null !== x.y) {
+                            B = i.x - x.x,
+                            z = i.y - x.y,
+                            y = B * B + z * z;
+                            y < x.max && (x === f && y >= x.max / 2 && (i.x -= 0.03 * B, i.y -= 0.03 * z), A = (x.max - y) / x.max, e.beginPath(), e.lineWidth = A / 2, e.strokeStyle = "rgba(" + s.c + "," + (A + 0.2) + ")", e.moveTo(i.x, i.y), e.lineTo(x.x, x.y), e.stroke())
+                        }
+                    }
+                    w.splice(w.indexOf(i), 1)
+                }),
+                m(b)
+            }
+            var u = document.createElement("canvas"),
+            s = l(),
+            c = "c_n" + s.l,
+            e = u.getContext("2d"),
+            r,
+            n,
+            m = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+            function(i) {
+                window.setTimeout(i, 1000 / 45)
+            },
+            a = Math.random,
+            f = {
+                x: null,
+                y: null,
+                max: 20000
+            };
+            u.id = c;
+            u.style.cssText = "position:fixed;top:0;left:0;z-index:" + s.z + ";opacity:" + s.o;
+            j("body")[0].appendChild(u);
+            k(),
+            window.onresize = k;
+            window.onmousemove = function(i) {
+                i = i || window.event,
+                f.x = i.clientX,
+                f.y = i.clientY
+            },
+            window.onmouseout = function() {
+                f.x = null,
+                f.y = null
+            };
+            for (var t = [], p = 0; s.n > p; p++) {
+                var h = a() * r,
+                g = a() * n,
+                q = 2 * a() - 1,
+                d = 2 * a() - 1;
+                t.push({
+                    x: h,
+                    y: g,
+                    xa: q,
+                    ya: d,
+                    max: 6000
+                })
+            }
+            setTimeout(function() {
+                b()
+            }, 100)
+    } ();
+    </script>
 </footer>
 
         </div>
